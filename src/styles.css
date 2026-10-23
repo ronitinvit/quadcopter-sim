@@ -1,0 +1,66 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #0b1118;
+  font-family: "Segoe UI", system-ui, sans-serif;
+  color: #e8eef5;
+}
+
+#renderCanvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+  outline: none;
+  touch-action: none;
+}
+
+#hud {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  min-width: 280px;
+  padding: 12px 14px;
+  background: rgba(8, 14, 22, 0.82);
+  border: 1px solid rgba(140, 170, 200, 0.25);
+  border-radius: 8px;
+  font-size: 12px;
+  line-height: 1.45;
+  white-space: pre;
+  pointer-events: none;
+}
+
+#controls {
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  max-width: calc(100% - 24px);
+}
+
+#controls button {
+  background: #1c3a52;
+  color: #e8eef5;
+  border: 1px solid #4d7ea0;
+  border-radius: 6px;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+#controls button:hover {
+  background: #27516f;
+}
+
+#controls button[aria-pressed="true"] {
+  background: #315d78;
+  border-color: #8ac7eb;
+}

@@ -24,6 +24,10 @@ npm run preview
 
 Motion is driven by Havok, not by a canned animation. The drone falls under gravity and collides with the ground. The HUD reads position and velocity from the physics body and counts `onAfterPhysicsObservable` steps.
 
+The procedural drone has a carbon-weave arm finish, detailed electronics enclosure, metal motor housings, visible propellers, landing skids, fasteners, and front/rear safety markings. Four hub centers stay aligned with the configured rotor force points; all decorative meshes remain attached to the existing visual root and do not add physics bodies. The outdoor scene uses a procedural grass field, a marked concrete landing pad, distant terrain silhouettes, daylight lighting, and soft shadows. Use **Grid / Axes** to switch to technical ground references and **Reset Camera** to restore the initial orbit framing.
+
+Use **Hide readings** / **Show readings** to toggle the telemetry panel without affecting physics or controls.
+
 Milestone 2A adds a mouse impact interaction. In Impact mode, swipe across a drone component to apply a bounded `PhysicsBody.applyImpulse` at the picked world-space point. Swipe direction is mapped through the camera's screen-right and screen-up directions, so an off-centre hit can create angular motion. The HUD and short-lived scene marker show the hit component, point, and impulse magnitude.
 
 Milestone 2B adds a spring-like mouse grab. In Grab mode, hold a picked point and drag it; a damped force is applied at the corresponding point on the rigid body through Physics V2. The mouse target stays on a plane perpendicular to the initial view direction, and the cursor displacement and force are bounded. Releasing the pointer, losing focus, cancelling the pointer, or switching modes immediately ends the grab.

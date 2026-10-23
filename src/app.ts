@@ -13,13 +13,26 @@ import { bindInteractionModes } from "./input/interactionModes";
 import { bindHud } from "./diagnostics/hud";
 
 export async function startApp(canvas: HTMLCanvasElement, hud: HTMLElement): Promise<Engine> {
+  const hudToggle = document.querySelector<HTMLButtonElement>("#toggle-hud");
+  if (!hudToggle) {
+    throw new Error("Missing HUD visibility control.");
+  }
+  hudToggle.addEventListener("click", () => {
+    hud.hidden = !hud.hidden;
+    hudToggle.textContent = hud.hidden ? "Show readings" : "Hide readings";
+    hudToggle.setAttribute("aria-expanded", String(!hud.hidden));
+  });
+
   const engine = createEngine(canvas);
-  const { scene, camera, groundMesh } = createScene(engine, canvas);
+  const { scene, camera, groundMesh, shadowGenerator } = createScene(engine, canvas);
 
   const plugin = await createHavokPlugin();
   enablePhysicsWorld(scene, plugin, groundMesh);
 
   const visual = createDroneVisual(scene);
+  for (const mesh of visual.root.getChildMeshes()) {
+    shadowGenerator.addShadowCaster(mesh);
+  }
   const drone = attachDronePhysics(scene, plugin, visual);
   camera.lockedTarget = visual.root;
   const rotorThrust = bindRotorThrust(scene, drone.physicsBody, visual.root, plugin);

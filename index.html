@@ -10,6 +10,7 @@
     <canvas id="renderCanvas" tabindex="0"></canvas>
     <aside id="hud" aria-live="polite">Initializing…</aside>
     <div id="controls">
+      <button type="button" id="toggle-hud" aria-controls="hud" aria-expanded="true">Hide readings</button>
       <button type="button" id="mode-free" aria-pressed="true">Free Physics</button>
       <button type="button" id="mode-hover" aria-pressed="false">Hover Test</button>
       <button type="button" id="mode-stabilized" aria-pressed="false">Stabilized Hover</button>
@@ -20,6 +21,8 @@
       <button type="button" id="mode-grab" aria-pressed="false">Grab mode</button>
       <button type="button" id="impulse-up">Impulse +Y (Space)</button>
       <button type="button" id="impulse-x">Impulse +X (F)</button>
+      <button type="button" id="toggle-grid" aria-pressed="false">Grid / Axes</button>
+      <button type="button" id="reset-camera">Reset Camera</button>
     </div>
     <script type="module" src="/src/main.ts"></script>
   </body>
